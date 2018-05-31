@@ -1,3 +1,4 @@
+
 # Lab - Terraform
 
 * _Criar uma infraestrutura como código (IaC) utilizando Terraform._
@@ -17,10 +18,17 @@
    *      Criar um Load Balancer e registrar o container FARGATE nele para disponibilizar o conteúdo do container de forma escalável;
 
 * **ETAPA 2**
+   *      Criar um novo Branch no repositório e alterar (apenas neste branch) o terraform de forma que ele altere a infra-estrutura previamente criada:
+   *      Alterar o nome do Bucket S3 sem que a referência do mesmo no CloudFront ou seu funcionamento como hosting de site estático seja perdida;
+   *      Configurar o auto-scaling do container FARGATE para que ele seja automaticamente escalado sempre que o uso de memória ultrapassar 50%;
+   *      Alterar a subnet previamente criada setando seu escopo para 10.30.0.0/24 mantendo todos os recursos em funcionamento;
 
-   * Criar um novo Branch no repositório e alterar (apenas neste branch) o terraform de forma que ele altere a infra-estrutura previamente criada:
-   * Alterar o nome do Bucket S3 sem que a referência do mesmo no CloudFront ou seu funcionamento como hosting de site estático seja perdida;
-   * Configurar o auto-scaling do container FARGATE para que ele seja automaticamente escalado sempre que o uso de memória ultrapassar 50%;
-   * Alterar a subnet previamente criada setando seu escopo para 10.30.0.0/24 mantendo todos os recursos em funcionamento;
-
-
+## Descrição (arquivos):
+* _variables:_ Variáveis que os módulos vão utilizar
+* _s3_bucket:_ Criação do Bucket e Site estático
+* _cloudfront:_ Criação da CDN e apontamento para Origin Bucket
+* _modules:_ Módulos para gerenciamento da Rede, Security Groups e ECS
+  * _ecs:_ A pasta contém os arquivos para criação do Cluster ECS, Services e variáveis para o módulo.
+  * _networking:_ Contém arquivos para criação da VPC, Subnets (pública e privada), Internet Gateway, Route Tables e Security Groups. 
+  * _s3:_
+  * _tasks:_ Contém arquivo .json para iniciar a task e criar o container ECS.
