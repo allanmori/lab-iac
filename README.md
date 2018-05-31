@@ -17,6 +17,7 @@
    *      Criar um Load Balancer e registrar o container FARGATE nele para disponibilizar o conteúdo do container de forma escalável;
 
 * **ETAPA 2**
+
    * Criar um novo Branch no repositório e alterar (apenas neste branch) o terraform de forma que ele altere a infra-estrutura previamente criada:
    * Alterar o nome do Bucket S3 sem que a referência do mesmo no CloudFront ou seu funcionamento como hosting de site estático seja perdida;
    * Configurar o auto-scaling do container FARGATE para que ele seja automaticamente escalado sempre que o uso de memória ultrapassar 50%;
