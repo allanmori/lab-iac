@@ -15,7 +15,7 @@ module "networking" {
   source               = "./modules/networking"
   environment          = "production"
   vpc_cidr             = "10.20.0.0/16"
-  public_subnet_cidr  = ["10.20.0.0/24", "10.20.1.10/24"]
+  public_subnet_cidr  = ["10.30.0.0/24", "10.20.1.10/24"]
   private_subnet_cidr = ["10.20.10.0/24","10.20.20.0/24"]
   aws_region               = "${var.aws_region}"
   availability_zones   = "${local.production_availability_zones}"
@@ -43,7 +43,7 @@ variable "root_dominio" {
 }
 
 variable "blog_bucket_subdominio" {
-    default = "tecnologia"
+    default = "tecnologia-branch"
 }
 
 variable "blog_public_subdominio" {
